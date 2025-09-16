@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增强表单</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        #submit{
+            width: 90px;
+            border-radius: 25px;
+        }
+        #text{
+            height: 25px;
+            position: relative;
+            top: -10px;
+        }
+        textarea{
+            width: 300px;
+            height: 100px;
+            resize: vertical;/* 只能竖直方向改变大小 */
+        }
+        fieldset{
+            border: 2px solid blue;
+            width: 200px;
+            padding: 10px;
+        }
+        input:focus{
+            background-color: lightskyblue;
+        }
+        input[type=checkbox],input[type=radio]{
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            border: 1px solid black;
+            border-radius: 3px;
+        }
+        input:checked{
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>请填写调查表</h1>
+    <div>
+        <div class="box1">1.满意度？</div>
+        <div>
+            <input type="radio" name="A" id="a" checked><label for="a">非常满意</label>
+        </div>
+        <div>
+            <input type="radio" name="A" id="b" ><label for="b">比较满意</label>
+        </div>
+        <div>
+            <input type="radio" name="A" id="c"><label for="c">一般</label>
+        </div>
+        <div>
+            <input type="radio" name="A" id="d"><label for="d">不满意</label>
+        </div>
+    </div>
+    <hr>
+
+    <div>
+        <div class="box1">2.兴趣爱好？</div>
+        <div>
+            <input type="checkbox" name="B" id="e"><label for="e">绘画</label>
+        </div>
+        <div>
+            <input type="checkbox" name="B" id="f"><label for="f">游泳</label>
+        </div>
+        <div>
+            <input type="checkbox" name="B" id="g"><label for="g">舞蹈</label>
+        </div>
+        <div>
+            <input type="checkbox" name="B" id="h"><label for="h">写作</label>
+        </div>
+    </div>
+    <hr>
+
+    <div>
+        <div>3.请截图说明</div>
+        <div>
+            <input type="file">
+        </div>
+    </div>
+    <hr>
+    
+    <form action="">
+        <div>4.请写出相关意见</div>
+        <input type="text" id="text" value="很好" autofocus required><input type="image" src="./img/submit.png" id="submit">
+    </form>
+    <hr>
+    
+    <div>
+        <div>5.隐藏按钮</div>
+        <input type="hidden" value="带给后端的个人信息，，，">
+    </div>
+    <hr>
+    
+    <div>
+        <div>6.禁用，只读</div>
+        <button disabled>注册</button>
+        <input type="text" readonly>
+    </div>
+    <hr>
+    
+    <div>
+        <div>7.选择地址和其他要求</div>
+        <select size="1">
+            <option value="给后端的信息，，">北京</option>
+            <option value="" selected>山东</option>
+            <option value="">辽宁</option>
+            <option value="">云南</option>
+            <option value="">上海</option>
+            <option value="">江苏</option>
+            <option value="">沈阳</option>
+            <option value="">新疆</option>
+            <option value="">西安</option>
+            <option value="">浙江</option>
+            <option value="">杭州</option>
+        </select>
+        <form action="">
+            日期选择：<input type="date" name="date">
+            <br>
+            颜色选择：<input type="color">
+            <br>
+            邮箱：<input type="email" name="email" required>
+            <br>
+            电话：<input type="tel" name="telephone" required>
+            <br>
+            网址(完整)：<input type="url" name="url" required>
+            <br>
+            范围选择：<input type="range" name="range" min="0" max="200" value="50" step="10">
+            <br>
+            数字选择：<input type="number" name="number" min="0" max="100" value="50" step="10">
+            <br>
+            搜索框：<input type="search" name="search">
+            <br>
+            <input type="submit">
+        </form>
+    </div>
+    <hr>
+    
+        <form action="">
+            <div>8.反馈调查</div>
+            <textarea placeholder="请输入文本..." required></textarea>
+            <input type="submit">
+        </form>
+    <hr>
+    
+    <div>
+        <div>9.字段集</div>
+        <fieldset>
+            <legend>性别选择</legend>
+            <input type="radio" name="sex" id="men"><label for="men">男</label>
+            <br>
+            <input type="radio" name="sex" id="women"><label for="women">女</label>
+        </fieldset>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./img/font/iconfont.css">
+    <title>移动端</title>
+    <script>
+        // document.documentElement.style.fontSize=document.documentElement.clientWidth/320 * 20 + 'px'
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-size: 5vw;
+        }
+
+        header{
+            height: 2.5rem;
+            background-color: rgb(24, 230, 62);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav{
+            height: 2.25rem;
+            background-color: white;
+            border: .05rem solid gray;
+            position: sticky;
+            top: 0;
+        }
+        section{
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            overflow: auto;
+        }
+        footer{
+            height: 2.5rem;
+            background-color:white;
+            border: .05rem solid gray;
+        }
+        header div{
+            width: 3.5rem;
+            height: 1.5rem;
+            background-color: rgb(148, 247, 167);
+            font-size: .6rem;
+            text-align: center;
+            line-height: 1.5rem;
+            color: rgb(200, 247, 209);
+        }
+        .page1:hover,.page2:hover{
+            background-color: rgb(175, 240, 187);
+            color: white;
+        }
+        .page1{
+            border-radius: 1rem 0 0 1rem;
+        }
+        .page2{
+            border-radius: 0 1rem 1rem 0;
+        }
+        nav ul{
+            display: flex;
+            height: 100%;
+        }
+        ul li{
+            display: block;
+            flex: 1;
+            height: 2.25rem;
+            font-size: .6rem;
+            text-align: center;
+            line-height: 2.25rem;
+            color: gray;
+        }
+        nav ul li:hover{
+            border-bottom: .15rem solid green;
+            color: green;
+        }
+        .container{
+            margin: .15rem;
+            padding: .1rem;
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: .05rem solid gray;
+        }
+        .container p{
+            width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        img{
+            width: 100%;
+        }
+        section div p{
+            height: 1.5rem;
+            line-height: 1.5rem;
+            font-size: .5rem;
+            color: gray;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        footer ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer li{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: gray;
+        }
+        footer li:hover{
+            color: green;
+        }
+        footer li span{
+            display: block;
+            height: 1.05rem;
+            line-height: 1.05rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+        footer li p{
+            height: .85rem;
+            line-height: .85rem;
+            font-size: .6rem;
+            text-align: center;
+        }
+        footer li:nth-child(3){
+            position: relative;
+        }
+        footer li:nth-child(3) span{
+            width: 2.75rem;
+            height: 2.75rem;
+            border: .05rem solid gray;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -1.35rem;
+            margin-top: -1.35rem;
+            background-color: white;
+            font-size: 1.5rem;
+            line-height: 2.75rem;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="page1">热点</div>
+        <div class="page2">关注</div>
+    </header>
+    <nav>
+        <ul>
+            <li>足球生活</li>
+            <li>足球实况</li>
+            <li>足球新闻</li>
+        </ul>
+    </nav>
+    <section>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+        <div class="container">
+                <img src="./img/head.jpg" alt="">
+                <P>111111111111111111111111111111111</P>
+        </div>
+    </section>
+    <footer>
+        <ul>
+            <li>
+                <span class="iconfont icon-shouye"></span>
+                <p>首页</p>
+            </li>
+            <li>
+                <span class="iconfont icon-wode"></span>
+                <p>我的</p>
+            </li>
+            <li>
+                <span class="iconfont icon-sousuo"></span>
+            </li>
+            <li>
+                <span class="iconfont icon-duzheliuyan"></span>
+                <p>留言</p>
+            </li>
+            <li>
+                <span class="iconfont icon-xihuan"></span>
+                <p>喜欢</p>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

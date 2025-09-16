@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二级菜单</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 300px;
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+        }
+        .box>li{
+            float: left;
+            width: 148px;
+            background-color: blue;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 20px;
+            line-height: 40px;
+            
+            position: relative;
+        }
+        .box>li>ul{
+            display: none;
+            background-color: white;
+            position: absolute;
+            top: 40px;
+            width: 148px;
+        }
+        .box>li:hover{
+            background-color: lightblue;
+        }
+        .box>li:hover ul{
+            display: block;
+        }
+        .box>li li:hover{
+            color: blue;
+        }
+        
+        .content{
+            background-color: yellow;
+            height: 100px;
+            clear: both;
+        }
+        /* .box::after{
+            display: block;
+            content: "";
+            clear: both;
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        } */
+        </style>
+</head>
+
+<body>
+    <ul class="box">
+        <li>水果
+            <ul>
+                <li>苹果</li>
+                <li>香蕉</li>
+                <li>桃子</li>
+            </ul>
+        </li>
+        <li>蔬菜
+             <ul>
+                <li>青椒</li>
+                <li>茄子</li>
+                <li>油菜</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="content">11111111</div>
+
+
+</body>
+
+</html>

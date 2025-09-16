@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴＋引入字体</title>
+    <style>
+        div{
+            font-family: myfont;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        div[id]{
+            display: none;
+        }
+        div[id]:target{
+            display: block;
+        }
+        @font-face{
+            font-family: myfont;
+            src: url(./img/新字体.otf);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="#aaa">aaa</a>
+        <div id="aaa">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, nostrum minima quae vero excepturi error
+            velit sequi illo repellendus. Repellendus voluptatum nostrum beatae suscipit distinctio esse. Adipisci ea
+            architecto odio.
+        </div>
+    </div>
+    <div>
+        <a href="#bbb">bbb</a>
+        <div id="bbb">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, nostrum minima quae vero excepturi error
+            velit sequi illo repellendus. Repellendus voluptatum nostrum beatae suscipit distinctio esse. Adipisci ea
+            architecto odio.
+        </div>
+    </div>
+    <div>
+        <a href="#ccc">ccc</a>
+        <div id="ccc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, nostrum minima quae vero excepturi error
+            velit sequi illo repellendus. Repellendus voluptatum nostrum beatae suscipit distinctio esse. Adipisci ea
+            architecto odio.
+        </div>
+    </div>
+</body>
+
+</html>
