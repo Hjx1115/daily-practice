@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="mysearch">
+    <ul id="list"></ul>
+    <script>
+        function test(obj) {
+            if(obj.g===undefined)list.innerHTML ="未搜索到相关内容"
+            else list.innerHTML = obj.g.map(item =>
+                `<li>${item.q}</li>`).join("")
+        }
+        //jsonp解决跨域问题，动态创建script标签，src属性没有跨域限制
+        //可指向一个接口，返回一个函数(只能get，记得删除)
+        //设置timer实现函数防抖
+
+        mysearch.oninput = (function () {
+            var timer = null
+            return function (evt) {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(function () {
+                    if (!evt.target.value) {
+                        list.innerHTML = "请输入查询内容"
+                        return
+                    }
+                    var oscript = document.createElement("script")
+                    oscript.src = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web
+                    &sugsid=60277,63144,64313,64976,65121,65194,65245,65256,65277,65312,65419,65397,65457,65452,65482,65510,65543,65590
+                    &wd=${evt.target.value}&his=%5B%7B%22time%22%3A1712560807%2C%22kw%22%3A%22%E6%88%8A%E6%88%8C%E7%BB%B4%E6%96%B0%E8%BF%90%E5%8A%A8%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%8E%9F%E5%9B%A0%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1712560813%2C%22kw%22%3A%22%E6%88%8A%E6%88%8C%E7%BB%B4%E6%96%B0%E8%BF%90%E5%8A%A8%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%8E%9F%E5%9B%A0ppt%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1713168613%2C%22kw%22%3A%22%E8%BE%9B%E4%BA%A5%E9%9D%A9%E5%91%BD%E5%AF%B9%E7%A4%BE%E4%BC%9A%E7%BB%93%E6%9E%84%E5%BD%B1%E5%93%8Dppt%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1713168655%2C%22kw%22%3A%22%E8%BE%9B%E4%BA%A5%E9%9D%A9%E5%91%BD%E5%AF%B9%E7%A4%BE%E4%BC%9A%E7%BB%93%E6%9E%84%E5%BD%B1%E5%93%8D%22%2C%22fq%22%3A4%7D%2C%7B%22time%22%3A1713169247%2C%22kw%22%3A%22%E5%B0%81%E5%BB%BA%E5%86%9C%E6%B0%91%E5%92%8C%E5%9C%B0%E4%B8%BB%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1716001514%2C%22kw%22%3A%22%E6%99%BA%E6%85%A7%E5%9B%A2%E5%BB%BA%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1716129182%2C%22kw%22%3A%2211%E6%9C%8815%E6%97%A5%E6%98%AF%E4%BB%80%E4%B9%88%E6%98%9F%E5%BA%A7%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1716304692%2C%22kw%22%3A%22%E5%BA%B7%E5%BE%B7%20%E7%BA%AF%E7%B2%B9%E7%90%86%E6%80%A7%E5%88%A4%E6%96%AD%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1716376632%2C%22kw%22%3A%22cy.ncss.org.cn%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1718969755%2C%22kw%22%3A%22%E8%8B%B1%E7%BE%8E%E6%96%87%E5%8C%96%E4%BB%8B%E7%BB%8Dppt%22%2C%22fq%22%3A2%7D%5D&req=2&csor=1
+                    &cb=test&_=1759988289655`
+                    document.body.appendChild(oscript)
+                    oscript.onload = function () {
+                        oscript.remove()
+                    }
+                }, 500)
+            }
+        })()
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var targetDate=new Date("2025/11/11 10:00:00")
+        function daojishi(current,target){
+            var sub=Math.ceil((target-current)/1000)
+            var day=parseInt(sub/(24*60*60))
+            var hours=parseInt(sub%(24*60*60)/(60*60))
+            var minutes=parseInt(sub%(60*60)/60)
+            var seconds=sub%60
+            var obj={
+                day:day,
+                hours:hours,
+                minutes:minutes,
+                seconds:seconds
+            }
+            return obj
+        }
+        
+        setInterval(() => {
+            var currentDate=new Date()
+            var res = daojishi(currentDate,targetDate)
+            box.innerHTML=`距离双11秒杀还剩:${res.day}天，${res.hours}时，${res.minutes}分，${res.seconds}秒`
+            // document.write("<br>")
+        }, 1000);
+
+    </script>
+</body>
+</html>

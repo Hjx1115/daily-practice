@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        function Person(name,age){
+            this.name=name
+            this.age=age
+        }
+        Person.prototype.say=function(){
+            console.log(this.name,": hello!")
+        }
+        function Student(name,age,grade){
+            Person.call(this,name,age)//构造继承
+            this.grade=grade
+        }
+        Student.prototype=new Person()//原型继承
+        var obj=new Student("hjx",20,100)
+        obj.say()
+    </script> -->
+    <div class="box1">
+        <h1></h1>
+        <ul></ul>
+    </div>
+    <div class="box2">
+        <h1></h1>
+        <img src="" alt="" style="width: 100px;">
+        <ul></ul>
+    </div>
+    <script>
+        var data1 = {
+            title: "PE",
+            list: ["PE-1", "PE-2", "PE-3"]
+        }
+        var data2 = {
+            title: "Fanacial",
+            url:"../css布局练习/img/head.jpg",
+            list: ["Fanacial-1", "Fanacial-2", "Fanacial-3"]
+        }
+        function CreateList(ele, data={}) {
+            this.ele = document.querySelector(ele)
+            this.title = data.title
+            this.list = data.list
+        }
+        CreateList.prototype.render = function () {
+            var h1 = this.ele.querySelector("h1")
+            var ul = this.ele.querySelector("ul")
+            h1.innerHTML = this.title
+            ul.innerHTML = this.list.map(item => `<li>${item}</li>`).join("")
+        }
+
+        var obj1 = new CreateList(".box1", data1)
+        obj1.render()
+
+        function CreateImgList(ele,data){
+            CreateList.call(this,ele,data)//继承
+            this.imgUrl=data.url//新增
+        }
+        CreateImgList.prototype=new CreateList()
+        CreateImgList.prototype.enhenceRender = function () {
+            this.render()
+            var img=this.ele.querySelector("img")
+            img.src=this.imgUrl
+        }
+        var obj2 = new CreateImgList(".box2", data2)
+        obj2.enhenceRender()
+    </script>
+    <!-- <script>//语法糖
+        class Person{
+            constructor(name,age){
+                this.name=name
+                this.age=age
+            }
+            say(){
+                console.log(this.name,": hello")
+            }
+        }
+        class Student extends Person{
+            constructor(name,age,grade){
+                super(name,age)
+                this.grade=grade
+            }
+        }
+        var obj=new Student("Hjx",20,100)
+        obj.say()
+        console.log(obj)
+    </script> -->
+</body>
+</html>

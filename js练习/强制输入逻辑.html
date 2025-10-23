@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var res,yes
+        while(1){
+            res=prompt("请输入用户名：")
+            if(res==null || res==""){
+                alert("必须要输入姓名，请重新输入!")
+                continue
+            }
+            else{
+                yes=confirm("您的用户名为："+res.trim()+"，以后不可更改，您确定吗？")
+                if(yes){
+                    break
+                }
+                else{
+                    continue
+                } 
+            }
+        }
+        console.log(res.trim())
+    </script>
+</body>
+</html>

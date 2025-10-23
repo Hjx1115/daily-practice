@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./test.js"></script>
+    <script>
+        //模糊查询
+        var arr=["aaa","abc","ccc","bbb","cbb","abb","aac"]
+        var input=prompt("请输入查询内容：")
+        var res=arr.filter(
+            function(item){
+                return item.indexOf(input)>-1
+            }
+        )
+        console.log(res)
+        //JSON字符串
+        var str='{"name":"hjx","age":20}'
+        var obj=JSON.parse(str)
+        console.log(obj)
+
+        var obj1={"name":"hjx","age":20}
+        var str1=JSON.stringify(obj1)
+        console.log(str1)
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        input{
+            display: block;
+            width: 30%;
+            height: 5vw;
+            margin: 3rem auto;
+            font-size: 3vw;
+        }
+        span{
+            display: inline-block;
+            width: 5rem;
+            height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <input type="number">
+</body>
+</html>

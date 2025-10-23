@@ -1,0 +1,83 @@
+$color:blue;
+$width:100px;
+$isShowTab:true;
+
+.box{
+    background-color: $color;
+    width: $width;
+}
+
+.footer{
+    border-top: 1px solid $color;
+    width: $width*2;
+}
+//if-else
+@if($isShowTab==true){
+    .tabbar{
+        position: fixed;
+        left:0;
+        top: 0;
+    }
+}
+@else{
+}
+//for
+@for $item from 1 to 6{//1 to 6为1-5;1 through 6为1-6
+    li:nth-child(#{$item}){
+        position: absolute;
+        left: ($item - 1)*100px;
+        top: ($item - 1)*100px;
+    }
+}
+//each
+$colors:red,green,yellow;
+@each $item in $colors{
+    $index:index($colors,$item);
+    li:nth-child(#{$index}){
+        background-color: $item;
+    }
+}
+
+//混入
+@mixin my_transition($a:all,$b:1s){
+    transition: $a $b;
+    -webkit-transition: $a $b;
+    -moz-transition: $a $b;
+}
+.box1{
+    @include my_transition(width,2s)
+}
+
+//嵌套
+div{
+    width: $width;
+    height: $width;
+    >p{//儿子
+        font-size: large;
+        span{
+            color: $color;
+            :hover{//有空格，则鼠标移上去，所有的span都变
+                background-color: yellow;
+            }
+            &.active{//无空格，则为每一个span加这个属性
+                background-color: red;
+            }
+        }
+    }
+}
+
+//继承
+.base{
+    width: 100px;
+    height: 50px;
+    outline: none;
+    color: white;
+    font-size: large;
+}
+.btn_1{
+    @extend .base;
+    background-color: red;
+}
+
+//导入
+// @import "./..."

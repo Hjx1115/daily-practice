@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        //响应式修改拦截
+        let obj1={}
+        Object.defineProperty(obj1,"data",{
+            get(){
+                console.log("获取")
+                return box.innerHTML
+            },
+            set(value){
+                console.log("修改为：",value)
+                box.innerHTML=value
+            }
+        })
+        obj1.data="bxudvqxgkiyv"
+
+        //Vue3替换为Proxy代理(操作proxy)
+
+        let obj2={}
+        let proxy1=new Proxy(obj2,{
+            get(target,key){
+                console.log("获取:",target[key])
+                return target[key]
+            },
+            set(target,key,value){
+                console.log("修改为：",key,value)
+                target[key]=value
+                if(key==="data")box.innerHTML=value
+            },
+            has(){}
+        })
+        
+        let s=new Set()
+        let proxy2=new Proxy(s,{
+            get(target,key){
+                console.log("获取:",target[key])
+                let value=target[key]
+                //如果获取结果是一个方法，先改变this指向(Proxy=>Set)再返回，等同于if(typeof value==='function')
+                if(value instanceof Function)return value.bind(target)
+                return value
+            },
+            set(target,key,value){
+                console.log("修改为：",key,value)
+                target[key]=value
+                if(key==="data")box.innerHTML=value//当修改data时，改变页面内容
+            },
+            has(){}
+        })
+
+
+        //Reflect
+        let obj={}
+        Reflect.defineProperty(obj,"name",{
+            value:"Hjx",
+            writable:true,//可改写
+            enumerable:false,//不可删
+        })
+        //Reflect.deleteProperty  Reflect.has(obj,"name")=>true   Reflect.set(obj,"age",20)  Reflect.get(obj,"name")
+        //配合Proxy
+        let set=new Set()
+        let proxy3=new Proxy(set,{
+            get(target,key){
+                console.log("获取:",target[key])
+                let value=Reflect.get(...arguments)//修改
+                if(value instanceof Function)return value.bind(target)
+                return value
+            },
+            set(target,key,value){
+                console.log("修改为：",key,value)
+                Reflect.set(...arguments)//修改
+                if(key==="data")box.innerHTML=value
+            },
+            has(){}
+        })
+    </script>
+</body>
+</html>

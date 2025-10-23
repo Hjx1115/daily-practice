@@ -1,0 +1,52 @@
+{
+  "list": [
+    {
+      "text": "aaa",
+      "id": "1"
+    },
+    {
+      "text": "bbb",
+      "id": "2"
+    },
+    {
+      "text": "ccc",
+      "id": "3"
+    },
+    {
+      "text": "ddd",
+      "id": "4"
+    },
+    {
+      "text": "eee",
+      "id": "5"
+    }
+  ],
+  "LoopList":[
+    {
+      "id":"1",
+      "title":"LoopList-11111111"
+    },
+    {
+      "id":"2",
+      "title":"LoopList-22222222"
+    },
+    {
+      "id":"3",
+      "title":"LoopList-33333333"
+    }
+  ],
+  "DataList":[
+    {
+      "id":"1",
+      "title":"DataList-11111111"
+    },
+    {
+      "id":"2",
+      "title":"DataList-22222222"
+    },
+    {
+      "id":"3",
+      "title":"DataList-33333333"
+    }
+  ]
+}

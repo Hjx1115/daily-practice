@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+    <script>
+        class Person{
+            static myname="Person name"//直接给Person类挂东西
+            static mymethod=function(){
+                console.log("Person method")
+            }
+
+            constructor(name,age,id){
+                this.name=name
+                this.age=age
+                this.ele=document.querySelector(`#${id}`)
+            }
+            say(){
+                console.log(`Hello,I'm ${this.name},${this.age}`)
+            }
+            get html(){
+                return this.ele.innerHTML
+            }
+            set html(data){
+                console.log("set",data)
+                this.ele.innerHTML=data.map(item=>`<li>${item}</li>`).join("")
+            }
+        }
+        let obj=new Person("Hjx",20,"list")
+        obj.html=["111","222","333"]
+
+        //继承
+        class Student extends Person{
+            constructor(name,age,id,score){
+                super(name,age,id)
+                this.score=score
+            }
+            say(){
+                super.say()
+                console.log(this.score)
+            }
+            geSscore(){
+                console.log(`get成绩：${this.score}`)
+            }
+            setScore(data){
+                this.score=data
+                console.log(`set成绩：${this.score}`)
+            }
+        }
+        let obj1=new Student("Hjx1",20,"list","100")
+        console.log(obj1)
+    </script>
+</body>
+</html>

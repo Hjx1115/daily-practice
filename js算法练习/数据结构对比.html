@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //array=[1,2,3,4]
+        //查询：includes,indexOf,find(item=>item>1),findIndex(item=>item>1)
+        //添加：push,unshift
+        //删除：pop,shift
+        //修改：splice(开始索引,删除几个,添加的内容)
+
+        //string="abcde"
+        //查询：includes,indexOf,charAt,slice(截取)
+        //分割：split(""),substring(0,1)
+        //修改：replace,toUpperCase,toLowerCase,trim(去空格)
+
+        //object={"a":1,"b":2}
+        //查询：hasOwnProperty('a'),Object.keys(),values(),entries()
+        //克隆：不完全 Object.assign(obj,{b:4})
+        //完全 Object.defineProperties(obj1,Object.getOwnPropertyDescripters(obj))
+        //删除：delete obj.a
+        //修改：obj.a=...
+
+        //new Map=([["a",1],[{"b":1},2]])
+        //查询：get,has,size
+        //遍历：map.keys(),.values(),.entries()
+        //删除：delete("key"),clear
+        //改/增：set("key","value")
+
+        //new Set=([1,2,3,4])
+        //查询：has,size
+        //遍历：set.keys(),.values(),.entries()
+        //添加：add
+        //删除：delete(2),clear
+
+        let obj={"a":1,"b":2}
+        console.log(Object.getOwnPropertyDescriptors(obj))
+
+        let str="name=HJX&age=21&location=Jinan"
+        let arr=str.split("&")
+        for(let item of arr){
+            console.log(item.split("="))
+        }
+
+        let a=[1,2,3,4,5,6,7]
+        console.log(a.at(-1))
+    </script>
+</body>
+</html>

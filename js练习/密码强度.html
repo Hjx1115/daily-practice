@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 500px;
+            padding: 20px;
+            border: 3px solid #333;
+            margin: 50px auto;
+        }
+
+        form>label {
+            width: 100%;
+            height: 70px;
+        }
+
+        form>label>input {
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 30px;
+            font-size: 20px;
+            height: 50px;
+        }
+
+        form>p {
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        form>p>span {
+            text-align: center;
+            width: 30%;
+            background-color: #ccc;
+            color: #fff;
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+        form>p>span:nth-child(1).active {
+            background-color: red;
+        }
+
+        form>p>span:nth-child(2).active {
+            background-color: orange;
+        }
+
+        form>p>span:nth-child(3).active {
+            background-color: green;
+        }
+
+        form>input {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="">
+            <input type="text" required>
+        </label>
+        <p>
+            <span>弱</span>
+            <span>中</span>
+            <span>强</span>
+        </p>
+        <input type="submit" value="submit" id="submit">
+    </form>
+    <script>
+        var oinput = document.querySelector("input")
+        var ospan = document.querySelectorAll("span")
+        var reg1 = /\d/
+        var reg2 = /[a-z]/i
+        var reg3 = /[!@#$%^&*()_]/
+        var level
+        oinput.oninput = function (evt) {
+            level = 0
+            if (reg1.test(this.value)) level++
+            if (reg2.test(this.value)) level++
+            if (reg3.test(this.value)) level++
+
+            for (var i = 0; i < ospan.length; i++) {
+                ospan[i].classList.remove("active")
+                if(i<level){
+                    ospan[i].classList.add("active")
+                }
+            }
+            return level
+
+        }
+        submit.onclick = function (evt) {
+            if (level !== 3) {
+                alert("密码强度不够，请重新输入！");
+                evt.preventDefault(); // 阻止表单提交按钮默认行为
+                // return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="myget">GET接收</button>
+    <button id="mypost">POST发送</button>
+    <button id="myput">PUT覆盖修改</button>
+    <button id="mypatch">PATCH部分修改</button>
+    <button id="mydelete">DELETE删除</button>
+    <script type="module">
+        import{pajax,ajax}from "./util.js"
+        // ajax({
+        //     url:"http://localhost:3000/users",
+        //     method:"POST",
+        //     data:{
+        //         username:"111",
+        //         password:123456
+        //     },
+        //     headers:{
+        //         "content-type":"application/json"
+        //     },
+        //     success:function(res){
+        //         console.log("seccess",res)
+        //     },
+        //     error:function(err){
+        //         console.log("error",err)
+        //     }
+        // })
+        myget.onclick = function () {
+            // ajax({
+            //     url: "http://localhost:3000/users",
+            //     method: "GET",
+            //     data: {
+            //         username: "Hjx"
+            //     },
+            //     success: function (res) {
+            //         console.log("seccess", res)
+            //     },
+            //     error: function (err) {
+            //         console.log("error", err)
+            //     }
+            // })
+            var username="222"
+            fetch(`http://localhost:3000/users?username=${username}`)
+            .then(res=>{
+                if(res.ok)return res.json()
+                else return Promise.reject({
+                    status:res.status,
+                    statusText:res.statusText
+                })
+            })
+            .then(res=>{
+                console.log("seccess", res)
+            })
+            .catch(err=>{
+                console.log("error", err)
+            })
+        }
+        mypost.onclick = function () {
+            // ajax({
+            //     url: "http://localhost:3000/users",
+            //     method: "POST",
+            //     headers:{
+            //         "content-type":"application/json"
+            //     },
+            //     data: {
+            //         username: "222",
+            //         password: 123456
+            //     },
+            //     success: function (res) {
+            //         console.log("seccess", res)
+            //     },
+            //     error: function (err) {
+            //         console.log("error", err)
+            //     }
+            // })
+            fetch("http://localhost:3000/users",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({
+                    username:"222",
+                    password:123456
+                })
+            })
+            .then(res=>{
+                if(res.ok)return res.json()
+                else return Promise.reject({
+                    status:res.status,
+                    statusText:res.statusText
+                })
+            })
+            .then(res=>{
+                console.log("seccess", res)
+            })
+            .catch(err=>{
+                console.log("error", err)
+            })
+        }
+        myput.onclick = function () {
+            // ajax({
+            //     url: "http://localhost:3000/users/8816",
+            //     method: "PUT",
+            //     headers:{
+            //         "content-type":"application/json"
+            //     },
+            //     data: {
+            //         username: "222",
+            //         password: 123456
+            //     },
+            //     success: function (res) {
+            //         console.log("seccess", res)
+            //     },
+            //     error: function (err) {
+            //         console.log("error", err)
+            //     }
+            // })
+            fetch("http://localhost:3000/users/0a96",{
+                method:"PUT",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({
+                    username:"222",
+                    password:123
+                })
+            })
+            .then(res=>{
+                if(res.ok)return res.json()
+                else return Promise.reject({
+                    status:res.status,
+                    statusText:res.statusText
+                })
+            })
+            .then(res=>{
+                console.log("seccess", res)
+            })
+            .catch(err=>{
+                console.log("error", err)
+            })
+        }
+
+        mypatch.onclick = function () {
+            // ajax({
+            //     url: "http://localhost:3000/users/8816",
+            //     method: "PATCH",
+            //     headers:{
+            //         "content-type":"application/json"
+            //     },
+            //     data: {
+            //         username: "333",
+            //         password: 123456
+            //     },
+            //     success: function (res) {
+            //         console.log("seccess", res)
+            //     },
+            //     error: function (err) {
+            //         console.log("error", err)
+            //     }
+            // })
+            fetch("http://localhost:3000/users/0a96",{
+                method:"PATCH",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({
+                    password:123456
+                })
+            })
+            .then(res=>{
+                if(res.ok)return res.json()
+                else return Promise.reject({
+                    status:res.status,
+                    statusText:res.statusText
+                })
+            })
+            .then(res=>{
+                console.log("seccess", res)
+            })
+            .catch(err=>{
+                console.log("error", err)
+            })
+        }
+        mydelete.onclick = function () {
+            // ajax({
+            //     url: "http://localhost:3000/users/780d",
+            //     method: "DELETE",
+            //     success: function (res) {
+            //         console.log("seccess", res)
+            //     },
+            //     error: function (err) {
+            //         console.log("error", err)
+            //     }
+            // })
+            fetch("http://localhost:3000/users/0a96",{
+                method:"DELETE"
+            })
+            .then(res=>{
+                if(res.ok)return res.json()
+                else return Promise.reject({
+                    status:res.status,
+                    statusText:res.statusText
+                })
+            })
+            .then(res=>{
+                console.log("seccess", res)
+            })
+            .catch(err=>{
+                console.log("error", err)
+            })
+        }
+
+
+
+        //回调地狱-Promise ajax
+        pajax({
+            url: "http://localhost:3000/users",
+            data: {
+                username: "Yy"
+            }
+        }).then(res => {
+            console.log(res[0].id)
+            return pajax({
+                url: "http://localhost:3000/comments",
+                data: {
+                    commentsID: res[0].id
+                }
+            })
+        }).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .header {
+            display: flex;
+            width: 500px;
+        }
+
+        .header li {
+            flex: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .box {
+            position: relative;
+            height: 200px;
+        }
+
+        .box li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 500px;
+            height: 200px;
+            background-color: yellow;
+            display: none;
+        }
+
+        .header .active {
+            background-color: red;
+        }
+
+        .box .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 面向对象--列表
+    <div class="box1">
+        <h1></h1>
+        <ul></ul>
+    </div>
+    <div class="box2">
+        <h1></h1>
+        <ul></ul>
+    </div>
+    <script>
+        var data1 = {
+            title: "PE",
+            list: ["PE-1", "PE-2", "PE-3"]
+        }
+        var data2 = {
+            title: "Fanacial",
+            list: ["Fanacial-1", "Fanacial-2", "Fanacial-3"]
+        }
+        function CreateList(ele, data) {
+            this.ele = document.querySelector(ele),
+                this.title = data.title,
+                this.list = data.list
+        }
+        CreateList.prototype.render = function () {
+            var h1 = this.ele.querySelector("h1")
+            var ul = this.ele.querySelector("ul")
+            h1.innerHTML = this.title
+            ul.innerHTML = this.list.map(item => `<li>${item}</li>`).join("")
+        }
+
+        var obj1 = new CreateList(".box1", data1)
+        obj1.render()
+        var obj2 = new CreateList(".box2", data2)
+        obj2.render()
+    </script> -->
+
+    <!-- 面向对象--选项卡 -->
+    <div class="container1">
+        <ul class="header">
+            <li class="active">0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul class="box">
+            <li class="active">00</li>
+            <li>11</li>
+            <li>22</li>
+            <li>33</li>
+            <li>44</li>
+            <li>55</li>
+        </ul>
+    </div>
+    <div class="container2">
+        <ul class="header">
+            <li class="active">20</li>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+        </ul>
+        <ul class="box">
+            <li class="active">00</li>
+            <li>11</li>
+            <li>22</li>
+            <li>33</li>
+            <li>44</li>
+            <li>55</li>
+        </ul>
+    </div>
+    <script>
+        function Tabs(ele,type) {
+            var container = document.querySelector(ele)
+            this.oitems = container.querySelectorAll(".header li")
+            this.obox = container.querySelectorAll(".box li")
+            this.type=type
+            this.change()
+        }
+        Tabs.prototype.change = function () {
+            for (let i = 0; i < this.oitems.length; i++) {
+                this.oitems[i].addEventListener(this.type,()=> {
+                    for (var j = 0; j < this.oitems.length; j++) {
+                        this.oitems[j].classList.remove("active")
+                        this.obox[j].classList.remove("active")
+                    }
+                    this.oitems[i].classList.add("active")
+                    this.obox[i].classList.add("active")
+                })
+            }
+        }
+        // class Tabs{
+        //     constructor(ele,type){
+        //         ...
+        //     }
+        //     change(){
+        //         ...
+        //     }
+        // }
+        new Tabs(".container1","click")
+        new Tabs(".container2","mouseover")
+    </script>
+</body>
+
+</html>

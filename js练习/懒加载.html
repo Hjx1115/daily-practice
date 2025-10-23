@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        ul li {
+            overflow: hidden;
+            height: 300px;
+        }
+
+        li img {
+            width: 30%;
+            float: left;
+        }
+
+        h1 {
+            text-align: center;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>标题</h1>
+    <ul id="list">
+
+    </ul>
+    <script>
+        var arr1 = [
+            {
+                name: "111111111111111111",
+                url: "../css布局练习/img/head.jpg"
+            },
+            {
+                name: "111111111111111111",
+                url: "../css布局练习/img/head.jpg"
+            },
+            {
+                name: "111111111111111111",
+                url: "../css布局练习/img/head.jpg"
+            },
+            {
+                name: "111111111111111111",
+                url: "../css布局练习/img/head.jpg"
+            },
+            {
+                name: "111111111111111111",
+                url: "../css布局练习/img/head.jpg"
+            },
+            {
+                name: "111111111111111111",
+                url: "../css布局练习/img/head.jpg"
+            }
+        ]
+        var arr2 = [
+            {
+                name: "2222222222222222222222",
+                url: "../css布局练习/img/background.jpg"
+            },
+            {
+                name: "2222222222222222222222",
+                url: "../css布局练习/img/background.jpg"
+            },
+            {
+                name: "2222222222222222222222",
+                url: "../css布局练习/img/background.jpg"
+            },
+            {
+                name: "2222222222222222222222",
+                url: "../css布局练习/img/background.jpg"
+            },
+            {
+                name: "2222222222222222222222",
+                url: "../css布局练习/img/background.jpg"
+            },
+            {
+                name: "2222222222222222222222",
+                url: "../css布局练习/img/background.jpg"
+            }
+        ]
+        
+        renderHTML(arr1)
+        function renderHTML(arr) {
+            for(var i=0;i<arr.length;i++){
+                var oli=document.createElement("li")
+                oli.innerHTML=
+                `<img src="${arr[i].url}" alt="">
+                <h3>${arr[i].name}</h3>`
+                list.appendChild(oli)
+            }
+        }
+
+        isLoading=false
+        onscroll = function () {
+            var res1 = list.offsetHeight + list.offsetTop
+            var res2 = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.clientHeight
+            if(isLoading) return
+            if (Math.round(res1 - res2) < 50) {
+                console.log("到底了")
+                isLoading = true
+                setTimeout(function () {
+                    renderHTML(arr2)
+                    console.log("111")
+                    isLoading=false
+                },1000)
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //自定义迭代器
+        var obj={
+            name:"Hjx",
+            code:200,
+            list:["111","222","333"],
+            [Symbol.iterator](){
+                let index=0
+                return{
+                    next:()=>{
+                        return{
+                            value:this.list[index++],
+                            done:index===(this.list.length+1)?true:false
+                        }
+                    }
+                }
+            }
+        }
+        for(let i of obj){
+            console.log(i)
+        }
+        //Set深度去重
+        let arr=[1,2,2,"Hjx","Hjx",[1,2],[2,3],[1,2],{num:"123"},{age:20},{num:"123"},undefined,NaN,NaN]
+        function test(arr){
+            let res=new Set()
+            return arr.filter(item=>{//返回一个数组，包含所有原数组中返回值为true的元素
+                let id=JSON.stringify(item)
+                if(res.has(id))return false
+                else{
+                    res.add(id)
+                    return true
+                }
+            })
+        }
+        console.log(test(arr))
+        //Map
+        let m=new Map([
+            ["name","Hjx"],
+            ["age",20],
+            [{grade:3},"100"]
+        ])
+        m.set("num","123")
+        console.log(m.get("name"))
+        console.log(m.has("age"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var task1=new Promise(function(resolve,reject){
+            setTimeout(()=>{
+                resolve("task1")
+            },2000)
+        })
+        var task2=new Promise(function(resolve,reject){
+            setTimeout(()=>{
+                resolve("task2")
+            },3000)
+        })
+        //Promise.all 全部完成才会显示结果
+        Promise.all([task1,task2]).then(res=>console.log(res)).catch(err=>console.log(err))
+        //Promise.race 谁先完成，显示谁的结果（成功或失败）
+        Promise.race([task1,task2]).then(res=>console.log(res)).catch(err=>console.log(err))
+        //Promise.allSettled 成功失败都会在then中显示，可通过过滤只显示成功部分
+        Promise.allSettled([task1,task2]).then(res=>console.log(res))
+        //Promise.any 只要有一个成功就能成功
+        Promise.any([task1,task2]).then(res=>console.log(res))
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //WeakSet和WeakMap中，只能添加复杂类型，且引用计数不会+1（不会内存泄露）
+        //但是将无迭代，循环遍历，size,s1[0]等方法
+        let obj={
+            name:"Hjx",
+            age:20
+        }
+        let s1= new WeakSet()
+        s1.add(obj)
+        obj=null//s1将无法访问obj
+        console.log(s1)
+        //WeakRef 弱引用
+        let obj1={
+            name:"Hjx",
+            age:20,
+            location:"jinan"
+        }
+        let wobj=new WeakRef(obj1)//通过wob+j.deref()得到obj1
+        obj1 = null
+
+        // let m1=new WeakMap();//测试数据
+        // (function(){
+        //     let arr1=new Array(10*1024*1024)
+        //     let arr2=new Array(10*1024*1024)
+        //     let arr3=new Array(10*1024*1024)
+        //     let arr4=new Array(10*1024*1024)
+        //     let arr5=new Array(10*1024*1024)
+        //     let arr6=new Array(10*1024*1024)
+        //     let arr7=new Array(10*1024*1024)
+        //     m1.set(arr1,"11")
+        //     m1.set(arr2,"11")
+        //     m1.set(arr3,"11")
+        //     m1.set(arr4,"11")
+        //     m1.set(arr5,"11")
+        //     m1.set(arr6,"11")
+        //     m1.set(arr7,"11")
+        // })()
+    </script>
+</body>
+</html>

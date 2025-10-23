@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-size: 3rem;
+        }
+        button{
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        用户名：
+        <input type="text" id="username">
+    </div>
+    <div>
+        密码：
+        <input type="password" id="password">
+    </div>
+    <button id="btn">登录</button>
+    <script>
+        //先尝试获取
+        username.value = localStorage.getItem("username")
+        password.value = localStorage.getItem("password")
+        //没有再记
+        btn.onclick = function () {
+            // console.log(username.value,password.value)
+            localStorage.setItem("username",username.value)
+            localStorage.setItem("password",password.value)
+        }
+
+    </script>
+</body>
+
+</html>

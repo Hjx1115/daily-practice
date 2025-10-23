@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        
+    </ul>
+    
+    <script>
+        var List=[
+            {
+                url:"../css布局练习/img/head.jpg",
+                title:"1111111111",
+                grade:1111
+            },
+            {
+                url:"../css布局练习/img/head.jpg",
+                title:"2222222222",
+                grade:2222
+            },
+            {
+                url:"../css布局练习/img/head.jpg",
+                title:"3333333333",
+                grade:3333
+            }
+        ]
+        var items=List.map(function(item){
+            return`<li>
+                <img src="${item.url}" alt="">
+                <h3>"${item.title}"</h3>
+                <p>观众评分；"${item.grade}"</p>
+                </li>`
+            })
+            console.log(items.join(""))
+        var oul=document.querySelector("ul")
+        oul.innerHTML=items.join("")
+    </script>
+</body>
+</html>

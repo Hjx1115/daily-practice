@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        /* ul{
+            list-style: none;
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid black;
+            display: none;
+            position: absolute;
+        }
+        ul li:hover{
+            background-color: aqua;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- 留言删除,且点击留言可跳转（不包括按钮） -->
+    <ul id="list">
+    </ul>
+    <script>
+        var arr=["1111111","22222222","33333333","44444444","55555555"]
+        for(var i=0;i<arr.length;i++){
+            var oli=document.createElement("li")
+            oli.innerHTML=arr[i]
+            var obutton=document.createElement("button")
+            obutton.innerHTML="delete"
+            obutton.onclick=function(evt){
+                evt.stopPropagation()
+            }
+            oli.appendChild(obutton)
+            oli.onclick=function(){
+                location.href="http://www.baidu.com"
+            }
+            list.appendChild(oli)
+        }
+        list.onclick=function(evt){
+            evt.stopPropagation()
+            if(evt.target.nodeName==="BUTTON"){
+                evt.target.parentNode.remove()
+            }
+            
+        }
+    </script>
+
+    <!-- 拖拽 -->
+    <!-- <div id="box">
+    </div>
+    <script>
+        var flag
+
+        box.onmousedown = function () {
+            flag = true
+        }
+        box.onmouseup = function () {
+            flag = false
+        }
+
+        box.onmousemove = function (evt) {
+            if(flag){
+                var x = evt.clientX - (box.offsetWidth / 2)
+                var y = evt.clientY - (box.offsetHeight / 2)
+                if (y <= 0) y = 0
+                if (x <= 0) x = 0
+                if (y >= document.documentElement.clientHeight - box.offsetHeight) y = document.documentElement.clientHeight - box.offsetHeight
+                if (x >= document.documentElement.clientWidth - box.offsetWidth) x = document.documentElement.clientWidth - box.offsetWidth
+                box.style.left = x + "px"
+                box.style.top = y + "px"
+            }
+            else return
+        }
+    </script> -->
+
+    <!-- 自定义右键菜单 -->
+    <!-- <ul id="list">
+        <li class="a">111</li>
+        <li class="b">222</li>
+        <li class="c">333</li>
+    </ul>
+    <script>
+        //阻止默认右键菜单
+        // document.oncontextmenu=function(){
+        //     return false
+        // }
+        document.addEventListener("contextmenu",function(evt){
+            evt.preventDefault()
+            list.style.display="block"
+            var x=evt.clientX
+            var y=evt.clientY
+            if(x>=document.documentElement.clientWidth-list.offsetWidth)x=document.documentElement.clientWidth-list.offsetWidth
+            if(y>=document.documentElement.clientHeight-list.offsetHeight)y=document.documentElement.clientHeight-list.offsetHeight
+            console.log(x,y)
+            list.style.left=x+"px"
+            list.style.top=y+"px"
+        })
+        document.addEventListener("click",()=>{
+            list.style.display="none"
+        })
+        list.onclick=function(evt){
+            if(evt.target.className=="a"){
+                console.log("111")
+            }
+            if(evt.target.className=="b"){
+                console.log("222")
+            }
+            if(evt.target.className=="c"){
+                console.log("333")
+            }
+        } -->
+    </script>
+</body>
+
+</html>

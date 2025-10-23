@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import{pajax}from './util.js'
+        var username="Yy"
+        // async function test(){
+        //     await pajax({
+        //         url:"http://localhost:3000/users",
+        //         data:{
+        //             username:"222"
+        //         }
+        //     }).then(res=>{
+        //         console.log(res)
+        //     })
+        //     console.log("22222")
+        // }
+        // test()
+        async function test(){
+            var res=await fetch(`http://localhost:3000/users?username=${username}`)
+            .then(res=>res.json())
+
+            var res1=await fetch(`http://localhost:3000/comments?commentsID=${res[0].id}`)
+            .then(res=>res.json())
+            console.log(res1)
+        }
+        test()
+
+    </script>
+</body>
+</html>
